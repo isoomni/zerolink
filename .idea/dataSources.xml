@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="test@forclass.c8ydsrovkrwj.ap-northeast-2.rds.amazonaws.com" uuid="c03aad89-fb79-4133-ac46-eae3a9c78723">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://forclass.c8ydsrovkrwj.ap-northeast-2.rds.amazonaws.com:3306/test</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="zero-link" uuid="11ff1de2-ea2a-4d18-92ec-2fc434379d8e">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://zero-link.crnudsama3c6.ap-northeast-2.rds.amazonaws.com:3306</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
+  </component>
+</project>
