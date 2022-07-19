@@ -33,11 +33,11 @@ public class HomeController {
      */
     //Query String
     @ResponseBody
-    @GetMapping("") // (GET) 127.0.0.1:9000/home
-    public BaseResponse<List<GetHomeRes>> getHome(@RequestParam(required = false) int userIdx) {
+    @GetMapping("/") // (GET) 127.0.0.1:9000/home
+    public BaseResponse<GetHomeRes> getHome(@RequestParam(required = false) int userIdx) {
         try{
             // Get Users
-            List<GetHomeRes> getUsersRes = homeProvider.getHome();
+            GetHomeRes getUsersRes = homeProvider.getHome();
             return new BaseResponse<>(getUsersRes);
 
         } catch(BaseException exception){

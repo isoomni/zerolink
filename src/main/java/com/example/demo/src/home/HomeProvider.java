@@ -26,9 +26,9 @@ public class HomeProvider {
         this.homeDao = homeDao;
     }
 
-    public List<GetHomeRes> getHome() throws BaseException {
+    public GetHomeRes getHome() throws BaseException {
         try{
-            List<GetHomeRes> getHomeRes = homeDao.getHome();
+            GetHomeRes getHomeRes = homeDao.getHome();
             return getHomeRes;
         }
         catch (Exception exception) {
