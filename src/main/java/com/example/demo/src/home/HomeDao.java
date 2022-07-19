@@ -18,12 +18,13 @@ public class HomeDao {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
-    public List<GetHomeRes> getHome(){
+    public GetHomeRes getHome(){
         String getUsersQuery = "select * from User";
-        return this.jdbcTemplate.query(getUsersQuery,
-                (rs,rowNum) -> new GetHomeRes(
-                        rs.getInt("userIdx"),
-                        rs.getString("userName"))
-        );
+        return new GetHomeRes();
+//        return this.jdbcTemplate.queryForObject(getUsersQuery,
+//                (rs,rowNum) -> new GetHomeRes(
+//                        rs.getInt("userIdx"),
+//                        rs.getString("userName"))
+//        );
     }
 }
