@@ -3,15 +3,10 @@ package com.example.demo.src.home;
 import com.example.demo.config.BaseException;
 import com.example.demo.src.home.model.GetHomeRes;
 import com.example.demo.src.home.model.GetMenuRes;
-import com.example.demo.src.user.UserDao;
-import com.example.demo.src.user.model.GetUserRes;
-import com.example.demo.utils.JwtService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 import static com.example.demo.config.BaseResponseStatus.DATABASE_ERROR;
 
@@ -37,9 +32,9 @@ public class HomeProvider {
         }
     }
 
-    public GetMenuRes getMenu() throws BaseException {
+    public GetMenuRes getMenu(int menuIdx) throws BaseException {
         try{
-            GetMenuRes getMenures = homeDao.getMenu();
+            GetMenuRes getMenures = homeDao.getMenu(menuIdx);
             return getMenures;
         }
         catch (Exception exception) {

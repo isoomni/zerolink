@@ -2,13 +2,11 @@ package com.example.demo.src.home;
 
 import com.example.demo.src.home.model.GetHomeRes;
 import com.example.demo.src.home.model.GetMenuRes;
-import com.example.demo.src.user.model.GetUserRes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
-import java.util.List;
 
 @Repository
 public class HomeDao {
@@ -29,7 +27,7 @@ public class HomeDao {
 //        );
     }
 
-    public GetMenuRes getMenu() {
+    public GetMenuRes getMenu(int menuIdx) {
         return new GetMenuRes();
     }
 }

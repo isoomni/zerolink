@@ -46,11 +46,11 @@ public class HomeController {
     }
 
     @ResponseBody
-    @GetMapping("/") // (GET) 127.0.0.1:9000/home
-    public BaseResponse<GetMenuRes> getMenu(@RequestParam(required = false) int userIdx) {
+    @GetMapping("/menu/{menuIdx}") // (GET) 127.0.0.1:9000/home
+    public BaseResponse<GetMenuRes> getMenu(@RequestParam int menuIdx) {
         try{
             // Get Users
-            GetMenuRes getMenuRes = homeProvider.getMenu();
+            GetMenuRes getMenuRes = homeProvider.getMenu(menuIdx);
             return new BaseResponse<>(getMenuRes);
 
         } catch(BaseException exception){
