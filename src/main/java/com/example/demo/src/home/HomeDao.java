@@ -4,8 +4,6 @@ import com.example.demo.src.home.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.sql.DataSource;
 import java.util.List;
@@ -26,57 +24,64 @@ public class HomeDao {
     }
 
 
-    public GetHomeRes getHome(){
+    public GetHomeRes getHome(int userIdx){
         // 유저
-        String getUsersQuery1 = "select userIdx, userName from User";
+        String getUsersQuery1 = "select userIdx, userName from User where userIdx=?;";
 
         // 챌린지
-        String getUsersQuery2 = "select C.challengeName, UC.progress from UserChallenge UC LEFT JOIN Challenge C ON C.challengeIdx = UC.challengeIdx";
+        String getUsersQuery2 = "select UC.userIdx, C.challengeName, UC.progress\n" +
+                "from UserChallenge UC LEFT JOIN Challenge C ON C.challengeIdx = UC.challengeIdx\n" +
+                "where userIdx=?;";
 
         // 식당, 메뉴
-        String getUsersQuery3 = "select M.menuIdx, M.menuImg, M.menuName, M.menuQuantity, M.menuOriginalPrice, M.menuDiscountPrice, M.status as menuStatus,\n" +
-                "       R.closeTime, R.restaurantPhone, R.restaurantIdx, R.restaurantName, R.status as restaurantStatus,\n" +
-                "       concat(round(6371*acos(cos(radians(U.latitude))*cos(radians(R.latitude))*cos(radians(R.longitude)-radians(U.longitude))+sin(radians(U.latitude))*sin(radians(R.latitude))), 1), 'km') AS distance\n" +
-                "from Restaurant R LEFT JOIN Menu M ON R.restaurantIdx = M.restaurantIdx, User U\n" +
+        String getUsersQuery3 = "select R.restaurantIdx, R.closeTime, R.restaurantPhone, R.restaurantName, R.status as restaurantStatus,\n" +
+                "       concat(round(6371*acos(cos(radians(?))*cos(radians(R.latitude))*cos(radians(R.longitude)-radians(?))+sin(radians(?))*sin(radians(R.latitude))), 1), 'km') AS distance\n" +
+                "from Restaurant R\n" +
+                "WHERE R.restaurantIdx=?\n" +
                 "HAVING distance <= 10;";
 
+        String getMenuQuery4 = "select M.menuIdx, M.menuImg, M.menuName, M.menuQuantity, M.menuOriginalPrice, M.menuDiscountPrice, M.status as menuStatus, R.restaurantIdx\n" +
+                "from Restaurant R LEFT JOIN Menu M ON R.restaurantIdx = M.restaurantIdx;";
+
+        String getUserLocationQuery = "select latitude, longitude from User where userIdx=?;";
+
+        UserLocation userLocation = this.jdbcTemplate.queryForObject(getUserLocationQuery,
+                (rs, rowNum)-> new UserLocation(
+                        rs.getDouble("latitude"),
+                        rs.getDouble("longitude")
+                ), userIdx);
         challenges = this.jdbcTemplate.query(getUsersQuery2,
                 (rs, rowNum)-> new Challenge(
                         rs.getString("challengeName"),
                         rs.getInt("progress")
-                ));
-
+                ), userIdx);
         user = this.jdbcTemplate.queryForObject(getUsersQuery1,
                 (rs, rowNum)-> new User(
                         rs.getInt("userIdx"),
                         rs.getString("username"),
                         challenges
+                ), userIdx);
+
+        menus = this.jdbcTemplate.query(getMenuQuery4,
+                (rs1, rowNum1) -> new Menu(
+                        rs1.getInt("menuIdx"),
+                        rs1.getString("menuImg"),
+                        rs1.getString("menuName"),
+                        rs1.getInt("menuQuantity"),
+                        rs1.getInt("menuOriginalPrice"),
+                        rs1.getInt("menuDiscountPrice"),
+                        rs1.getString("menuStatus"),
+                        this.jdbcTemplate.queryForObject(getUsersQuery3,
+                                (rs2, rowNum2) -> new Restaurant(
+                                        rs2.getInt("restaurantIdx"),
+                                        rs2.getString("restaurantName"),
+                                        rs2.getString("distance"),
+                                        rs2.getInt("closeTime"),
+                                        rs2.getString("restaurantPhone"),
+                                        rs2.getString("restaurantStatus"))
+                                , userLocation.getLatitude(), userLocation.getLongitude(), userLocation.getLatitude(), rs1.getInt("restaurantIdx"))
                 ));
-
-        restaurant = this.jdbcTemplate.queryForObject(getUsersQuery3,
-                (rs, rowNum) -> new Restaurant(
-                        rs.getInt("restaurantIdx"),
-                        rs.getString("restaurantName"),
-                        rs.getDouble("distance"),
-                        rs.getInt("closeTime"),
-                        rs.getString("restaurantPhone"),
-                        rs.getString("restaurantStatus"))
-                );
-
-        menus = this.jdbcTemplate.query(getUsersQuery3,
-                (rs, rowNum) -> new Menu(
-                        rs.getInt("menuIdx"),
-                        rs.getString("menuImg"),
-                        rs.getString("menuName"),
-                        rs.getInt("menuQuantity"),
-                        rs.getInt("menuOriginalPrice"),
-                        rs.getInt("menuDiscountPrice"),
-                        rs.getString("menuStatus"),
-                        restaurant
-                ));
-
         return new GetHomeRes(user, menus);
-
     }
 
     // 상세화면 조회

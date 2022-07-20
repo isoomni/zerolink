@@ -11,7 +11,7 @@ import java.util.List;
 public class Restaurant {
     private int restaurantIdx;
     private String restaurantName;
-    private double distance;
+    private String distance;
     private int closeTime;
     private String restaurantPhone;
     private String restaurantStatus;
