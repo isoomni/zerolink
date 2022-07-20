@@ -4,6 +4,8 @@ import com.example.demo.src.home.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.sql.DataSource;
 import java.util.List;
@@ -34,7 +36,7 @@ public class HomeDao {
         // 식당, 메뉴
         String getUsersQuery3 = "select M.menuIdx, M.menuImg, M.menuName, M.menuQuantity, M.menuOriginalPrice, M.menuDiscountPrice, M.status as menuStatus,\n" +
                 "       R.closeTime, R.restaurantPhone, R.restaurantIdx, R.restaurantName, R.status as restaurantStatus,\n" +
-                "       concat(round(6371*acos(cos(radians(U.lattitude))*cos(radians(R.lattitude))*cos(radians(R.longitude)-radians(U.longitude))+sin(radians(U.lattitude))*sin(radians(R.lattitude))), 1), 'km') AS distance\n" +
+                "       concat(round(6371*acos(cos(radians(U.latitude))*cos(radians(R.latitude))*cos(radians(R.longitude)-radians(U.longitude))+sin(radians(U.latitude))*sin(radians(R.latitude))), 1), 'km') AS distance\n" +
                 "from Restaurant R LEFT JOIN Menu M ON R.restaurantIdx = M.restaurantIdx, User U\n" +
                 "HAVING distance <= 10;";
 
@@ -56,7 +58,7 @@ public class HomeDao {
                         rs.getInt("restaurantIdx"),
                         rs.getString("restaurantName"),
                         rs.getDouble("distance"),
-                        rs.getString("closeTime"),
+                        rs.getInt("closeTime"),
                         rs.getString("restaurantPhone"),
                         rs.getString("restaurantStatus"))
                 );
@@ -81,4 +83,6 @@ public class HomeDao {
     public GetMenuRes getMenu(int menuIdx) {
         return new GetMenuRes();
     }
+
+
 }
