@@ -14,4 +14,5 @@ public class Menu {
     private Integer menuOriginalPrice;
     private Integer menuDiscountPrice;
     private String status;
+    private Restaurant restaurant;
 }

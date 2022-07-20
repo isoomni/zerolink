@@ -13,5 +13,5 @@ import java.util.List;
 @NoArgsConstructor
 public class GetHomeRes {
     private User user;
-    private List<Restaurant> restaurants;
+    private List<Menu> menus;
 }

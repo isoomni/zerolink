@@ -27,12 +27,12 @@ public class HomeController {
 
     /**
      * 홈페이지 조회 API
-     * [GET] /home/restaurants
+     * [GET] /home
      * @return BaseResponse<GetHomeRes>
      */
     //Query String
     @ResponseBody
-    @GetMapping("/restaurants") // (GET) 127.0.0.1:9000/home
+    @GetMapping("/") // (GET) 127.0.0.1:9000/home
     public BaseResponse<GetHomeRes> getHome(@RequestParam(required = false) int userIdx) {
         try{
             // Get Users
