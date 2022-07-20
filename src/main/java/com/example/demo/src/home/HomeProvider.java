@@ -2,6 +2,7 @@ package com.example.demo.src.home;
 
 import com.example.demo.config.BaseException;
 import com.example.demo.src.home.model.GetHomeRes;
+import com.example.demo.src.home.model.GetMenuRes;
 import com.example.demo.src.user.UserDao;
 import com.example.demo.src.user.model.GetUserRes;
 import com.example.demo.utils.JwtService;
@@ -30,6 +31,16 @@ public class HomeProvider {
         try{
             GetHomeRes getHomeRes = homeDao.getHome();
             return getHomeRes;
+        }
+        catch (Exception exception) {
+            throw new BaseException(DATABASE_ERROR);
+        }
+    }
+
+    public GetMenuRes getMenu() throws BaseException {
+        try{
+            GetMenuRes getMenures = homeDao.getMenu();
+            return getMenures;
         }
         catch (Exception exception) {
             throw new BaseException(DATABASE_ERROR);

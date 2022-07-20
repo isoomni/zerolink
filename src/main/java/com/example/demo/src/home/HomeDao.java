@@ -1,6 +1,7 @@
 package com.example.demo.src.home;
 
 import com.example.demo.src.home.model.GetHomeRes;
+import com.example.demo.src.home.model.GetMenuRes;
 import com.example.demo.src.user.model.GetUserRes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -26,5 +27,9 @@ public class HomeDao {
 //                        rs.getInt("userIdx"),
 //                        rs.getString("userName"))
 //        );
+    }
+
+    public GetMenuRes getMenu() {
+        return new GetMenuRes();
     }
 }
