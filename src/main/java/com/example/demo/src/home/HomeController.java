@@ -39,8 +39,8 @@ public class HomeController {
      */
     //Query String
     @ResponseBody
-    @GetMapping("") // (GET) 127.0.0.1:9000/home
-    public BaseResponse<GetHomeRes> getHome() {
+    @GetMapping("/{userIdx}") // (GET) 127.0.0.1:9000/home
+    public BaseResponse<GetHomeRes> getHome(@PathVariable(value = "userIdx") int userIdx) {
         try{
 //            //jwt에서 idx 추출.
 //            int userIdxByJwt = jwtService.getUserIdx();
@@ -49,7 +49,8 @@ public class HomeController {
 //                return new BaseResponse<>(INVALID_USER_JWT);
 //            }  // 이 부분까지는 유저가 사용하는 기능 중 유저에 대한 보안이 철저히 필요한 api 에서 사용
             // Get Users
-            GetHomeRes getHomeRes = homeProvider.getHome();
+            System.out.println("userIdx = " + userIdx);
+            GetHomeRes getHomeRes = homeProvider.getHome(userIdx);
             return new BaseResponse<>(getHomeRes);
 
         } catch(BaseException exception){
