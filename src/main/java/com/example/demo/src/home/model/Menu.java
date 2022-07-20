@@ -4,15 +4,15 @@ import lombok.*;
 
 @Getter @Setter
 @NoArgsConstructor
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class Menu {
 
     private int menuIdx;
     private String menuImg;
     private String menuName;
-    private Integer menuQuantity;
-    private Integer menuOriginalPrice;
-    private Integer menuDiscountPrice;
-    private String status;
+    private int menuQuantity;
+    private int menuOriginalPrice;
+    private int menuDiscountPrice;
+    private String menuStatus;
     private Restaurant restaurant;
 }

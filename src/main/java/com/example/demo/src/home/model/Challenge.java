@@ -1,15 +1,12 @@
 package com.example.demo.src.home.model;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
 @NoArgsConstructor
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class Challenge {
     private String challengeName;
-    private Integer progress;
+    private int progress;
 }
