@@ -33,7 +33,7 @@ public class HomeDao {
 
         // 식당, 메뉴
         String getUsersQuery3 = "select M.menuIdx, M.menuImg, M.menuName, M.menuQuantity, M.menuOriginalPrice, M.menuDiscountPrice, M.status as menuStatus,\n" +
-                "       R.closeTime, R.restaurantPhone, R.restaurantIdx, R.restaurantName, R.status as restaurantStatus\n" +
+                "       R.closeTime, R.restaurantPhone, R.restaurantIdx, R.restaurantName, R.status as restaurantStatus,\n" +
                 "       concat(round(6371*acos(cos(radians(U.lattitude))*cos(radians(R.lattitude))*cos(radians(R.longitude)-radians(U.longitude))+sin(radians(U.lattitude))*sin(radians(R.lattitude))), 1), 'km') AS distance\n" +
                 "from Restaurant R LEFT JOIN Menu M ON R.restaurantIdx = M.restaurantIdx, User U\n" +
                 "HAVING distance <= 10;";
