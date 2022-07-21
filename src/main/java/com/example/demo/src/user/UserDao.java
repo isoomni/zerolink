@@ -25,8 +25,8 @@ public class UserDao {
                 (rs,rowNum) -> new GetUserRes(
                         rs.getInt("userIdx"),
                         rs.getString("userName"),
-                        rs.getString("ID"),
-                        rs.getString("Email"),
+                        rs.getString("id"),
+                        rs.getString("email"),
                         rs.getString("password"))
                 );
     }
@@ -38,8 +38,8 @@ public class UserDao {
                 (rs, rowNum) -> new GetUserRes(
                         rs.getInt("userIdx"),
                         rs.getString("userName"),
-                        rs.getString("ID"),
-                        rs.getString("Email"),
+                        rs.getString("id"),
+                        rs.getString("email"),
                         rs.getString("password")),
                 getUsersByEmailParams);
     }
@@ -51,8 +51,8 @@ public class UserDao {
                 (rs, rowNum) -> new GetUserRes(
                         rs.getInt("userIdx"),
                         rs.getString("userName"),
-                        rs.getString("ID"),
-                        rs.getString("Email"),
+                        rs.getString("id"),
+                        rs.getString("email"),
                         rs.getString("password")),
                 getUserParams);
     }
@@ -84,16 +84,16 @@ public class UserDao {
     }
 
     public User getPwd(PostLoginReq postLoginReq){
-        String getPwdQuery = "select userIdx, password,email,userName,id from User where id = ?";
+        String getPwdQuery = "select userIdx, id, password, email, userName from User where id = ?";
         String getPwdParams = postLoginReq.getId();
 
         return this.jdbcTemplate.queryForObject(getPwdQuery,
                 (rs,rowNum)-> new User(
                         rs.getInt("userIdx"),
-                        rs.getString("ID"),
-                        rs.getString("userName"),
+                        rs.getString("id"),
                         rs.getString("password"),
-                        rs.getString("email")
+                        rs.getString("email"),
+                        rs.getString("userName")
                 ),
                 getPwdParams
                 );
