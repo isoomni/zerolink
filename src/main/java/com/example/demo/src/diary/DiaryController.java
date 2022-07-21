@@ -1,4 +1,4 @@
-package com.example.demo.src.comunity;
+package com.example.demo.src.diary;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,16 +8,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/community")
-public class CommunityController {
+public class DiaryController {
     final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
-    private final CommunityProvider communityProvider;
+    private final DiaryProvider diaryProvider;
     @Autowired
-    private final CommunityService communityService;
+    private final DiaryService diaryService;
 
-    public CommunityController(CommunityProvider communityProvider, CommunityService communityService) {
-        this.communityProvider = communityProvider;
-        this.communityService = communityService;
+    public DiaryController(DiaryProvider diaryProvider, DiaryService diaryService) {
+        this.diaryProvider = diaryProvider;
+        this.diaryService = diaryService;
     }
 }
