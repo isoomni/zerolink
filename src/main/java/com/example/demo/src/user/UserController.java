@@ -36,48 +36,6 @@ public class UserController {
         this.jwtService = jwtService;
     }
 
-    /**
-     * 회원 조회 API
-     * [GET] /users
-     * 회원 번호 및 이메일 검색 조회 API
-     * [GET] /users? Email=
-     * @return BaseResponse<List<GetUserRes>>
-     */
-    //Query String
-    @ResponseBody
-    @GetMapping("") // (GET) 127.0.0.1:9000/app/users
-    public BaseResponse<List<GetUserRes>> getUsers(@RequestParam(required = false) String Email) {
-        try{
-            if(Email == null){
-                List<GetUserRes> getUsersRes = userProvider.getUsers();
-                return new BaseResponse<>(getUsersRes);
-            }
-            // Get Users
-            List<GetUserRes> getUsersRes = userProvider.getUsersByEmail(Email);
-            return new BaseResponse<>(getUsersRes);
-        } catch(BaseException exception){
-            return new BaseResponse<>((exception.getStatus()));
-        }
-    }
-
-    /**
-     * 회원 1명 조회 API
-     * [GET] /users/:userIdx
-     * @return BaseResponse<GetUserRes>
-     */
-    // Path-variable
-    @ResponseBody
-    @GetMapping("/{userIdx}") // (GET) 127.0.0.1:9000/app/users/:userIdx
-    public BaseResponse<GetUserRes> getUser(@PathVariable("userIdx") int userIdx) {
-        // Get Users
-        try{
-            GetUserRes getUserRes = userProvider.getUser(userIdx);
-            return new BaseResponse<>(getUserRes);
-        } catch(BaseException exception){
-            return new BaseResponse<>((exception.getStatus()));
-        }
-
-    }
 
     /**
      * 회원가입 API
@@ -105,7 +63,7 @@ public class UserController {
     }
     /**
      * 로그인 API
-     * [POST] /users/logIn
+     * [POST] /users/sign-in
      * @return BaseResponse<PostLoginRes>
      */
     @ResponseBody
@@ -114,6 +72,7 @@ public class UserController {
         try{
             // TODO: 로그인 값들에 대한 형식적인 validatin 처리해주셔야합니다!
             // TODO: 유저의 status ex) 비활성화된 유저, 탈퇴한 유저 등을 관리해주고 있다면 해당 부분에 대한 validation 처리도 해주셔야합니다.
+
             PostLoginRes postLoginRes = userProvider.logIn(postLoginReq);
             return new BaseResponse<>(postLoginRes);
         } catch (BaseException exception){
