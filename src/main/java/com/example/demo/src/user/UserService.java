@@ -36,6 +36,7 @@ public class UserService {
     }
 
     //POST
+    // 회원가입
     public PostUserRes createUser(PostUserReq postUserReq) throws BaseException {
         //중복
         if(userProvider.checkEmail(postUserReq.getEmail()) ==1){

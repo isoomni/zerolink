@@ -16,7 +16,7 @@ import static com.example.demo.config.BaseResponseStatus.*;
 import static com.example.demo.utils.ValidationRegex.isRegexEmail;
 
 @RestController
-@RequestMapping("/app/users")
+@RequestMapping("/users")
 public class UserController {
     final Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -86,7 +86,7 @@ public class UserController {
      */
     // Body
     @ResponseBody
-    @PostMapping("")
+    @PostMapping("/sign-up")
     public BaseResponse<PostUserRes> createUser(@RequestBody PostUserReq postUserReq) {
         // TODO: email 관련한 짧은 validation 예시입니다. 그 외 더 부가적으로 추가해주세요!
         if(postUserReq.getEmail() == null){
@@ -109,7 +109,7 @@ public class UserController {
      * @return BaseResponse<PostLoginRes>
      */
     @ResponseBody
-    @PostMapping("/logIn")
+    @PostMapping("/sign-in")
     public BaseResponse<PostLoginRes> logIn(@RequestBody PostLoginReq postLoginReq){
         try{
             // TODO: 로그인 값들에 대한 형식적인 validatin 처리해주셔야합니다!

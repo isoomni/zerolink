@@ -57,10 +57,10 @@ public class UserDao {
                 getUserParams);
     }
     
-
+    // 회원가입
     public int createUser(PostUserReq postUserReq){
-        String createUserQuery = "insert into User (userName, id, password, email) VALUES (?,?,?,?)";
-        Object[] createUserParams = new Object[]{postUserReq.getUserName(), postUserReq.getId(), postUserReq.getPassword(), postUserReq.getEmail()};
+        String createUserQuery = "insert into User (userName, id, password, email, phoneNumber) VALUES (?,?,?,?,?)";
+        Object[] createUserParams = new Object[]{postUserReq.getUserName(), postUserReq.getId(), postUserReq.getPassword(), postUserReq.getEmail(), postUserReq.getPhoneNumber()};
         this.jdbcTemplate.update(createUserQuery, createUserParams);
 
         String lastInserIdQuery = "select last_insert_id()";
@@ -68,7 +68,7 @@ public class UserDao {
     }
 
     public int checkEmail(String email){
-        String checkEmailQuery = "select exists(select email from UserInfo where email = ?)";
+        String checkEmailQuery = "select exists(select email from User where email = ?)";
         String checkEmailParams = email;
         return this.jdbcTemplate.queryForObject(checkEmailQuery,
                 int.class,

@@ -52,6 +52,7 @@ public class HomeDao {
                         rs.getDouble("latitude"),
                         rs.getDouble("longitude")
                 ), userIdx);
+
         challenges = this.jdbcTemplate.query(getUsersQuery2,
                 (rs, rowNum)-> new Challenge(
                         rs.getString("challengeName"),
@@ -83,6 +84,7 @@ public class HomeDao {
                                         rs2.getString("restaurantStatus"))
                                 , userLocation.getLatitude(), userLocation.getLongitude(), userLocation.getLatitude(), rs1.getInt("restaurantIdx"))
                 ));
+
         return new GetHomeRes(user, menus);
     }
 
