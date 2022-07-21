@@ -45,7 +45,7 @@ public class UserController {
     // Body
     @ResponseBody
     @PostMapping("/sign-up")
-    public BaseResponse<PostUserRes> createUser(@RequestBody PostUserReq postUserReq) {
+    public BaseResponse<PostUserRes> createUser(PostUserReq postUserReq) {
         // TODO: email 관련한 짧은 validation 예시입니다. 그 외 더 부가적으로 추가해주세요!
         if(postUserReq.getEmail() == null){
             return new BaseResponse<>(POST_USERS_EMPTY_EMAIL);
@@ -68,7 +68,7 @@ public class UserController {
      */
     @ResponseBody
     @PostMapping("/sign-in")
-    public BaseResponse<PostLoginRes> logIn(@RequestBody PostLoginReq postLoginReq){
+    public BaseResponse<PostLoginRes> logIn(PostLoginReq postLoginReq){
         try{
             // TODO: 로그인 값들에 대한 형식적인 validatin 처리해주셔야합니다!
             // TODO: 유저의 status ex) 비활성화된 유저, 탈퇴한 유저 등을 관리해주고 있다면 해당 부분에 대한 validation 처리도 해주셔야합니다.
