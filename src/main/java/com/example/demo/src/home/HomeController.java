@@ -65,7 +65,7 @@ public class HomeController {
      */
     @ResponseBody
     @GetMapping("/menu/{menuIdx}") // (GET) 127.0.0.1:9000/home
-    public BaseResponse<GetMenuRes> getMenu(@RequestParam int menuIdx) {
+    public BaseResponse<GetMenuRes> getMenu(@PathVariable(value = "menuIdx") int menuIdx) {
         try{
             // Get Users
             GetMenuRes getMenuRes = homeProvider.getMenu(menuIdx);
