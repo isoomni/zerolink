@@ -37,6 +37,13 @@ public class HomeController {
         this.jwtService = jwtService;
     }
 
+    @GetMapping("/text-unescaped")
+    public String textUnescaped(Model model) {
+        model.addAttribute("data", "Hello <b>Spring!</b>");
+        return "basic/text-unescaped";
+    }
+
+
     /**
      * 홈페이지 조회 API
      * [GET] /home
