@@ -34,10 +34,13 @@ public class HomeProvider {
     }
 
     public List<Menu> getHome(int userIdx) {
-
         List<Menu> menus = homeDao.getHome(userIdx);
         return menus;
+    }
 
+    public List<Menu> getHome() {
+        List<Menu> menus = homeDao.getHome();
+        return menus;
     }
 
     public GetMenuRes getMenu(int menuIdx) throws BaseException {

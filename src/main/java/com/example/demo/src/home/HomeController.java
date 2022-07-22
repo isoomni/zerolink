@@ -20,7 +20,7 @@ import java.util.Map;
 import static com.example.demo.config.BaseResponseStatus.INVALID_USER_JWT;
 
 @Controller
-//@RequestMapping("/home")
+@RequestMapping("/home")
 public class HomeController {
     final Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -43,9 +43,18 @@ public class HomeController {
      * @return BaseResponse<GetHomeRes>
      */
     //Query String
-//    @ResponseBody
-    @GetMapping("/home/{userIdx}") // (GET) 127.0.0.1:9000/home
-    public String getHome(Model model, @PathVariable(value = "userIdx") int userIdx) {
+    @GetMapping("") // (GET) 127.0.0.1:9000/home
+    public String getHome(Model model) {
+        //검증 오류 결과를 보관
+        Map<String, String> errors = new HashMap<>();
+        List<Menu> menus = homeProvider.getHome();
+        model.addAttribute("menus", menus);
+        System.out.println("menus = " + menus);
+        return "home/home";
+    }
+
+    @GetMapping("/{userIdx}") // (GET) 127.0.0.1:9000/home
+    public String getHome(Model model, @PathVariable(value = "userIdx", required = false) int userIdx) {
         //검증 오류 결과를 보관
         Map<String, String> errors = new HashMap<>();
 //            //jwt에서 idx 추출.
@@ -60,6 +69,7 @@ public class HomeController {
         List<Menu> menus = homeProvider.getHome(userIdx);
         model.addAttribute("user", user);
         model.addAttribute("menus", menus);
+        System.out.println("menus = " + menus);
         return "home/home";
     }
 
