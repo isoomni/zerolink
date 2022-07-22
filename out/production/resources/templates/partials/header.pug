@@ -1,0 +1,21 @@
+header
+  nav
+    ul
+      // 아래 a 태그의 href속성 url에 맞게 변경해야 함
+      a.logo(href="/home/:userIdx")
+        img(src="../../static/images/logo.png", alt="")
+        li Zero-Link
+      a(href="#")
+        li 오늘의 상품
+      a(href="#")
+        li 전체 상품
+      a(href="#")
+        li 커뮤니티
+      a(href="#")
+        li 챌린지
+      if {userIdx}
+        a.logout(href="#")
+          li Logout
+      else
+        a.login(href="/users/sign-in")
+          li Login

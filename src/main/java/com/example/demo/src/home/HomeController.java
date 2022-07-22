@@ -2,10 +2,12 @@ package com.example.demo.src.home;
 
 import com.example.demo.config.BaseException;
 import com.example.demo.config.BaseResponse;
+import com.example.demo.src.home.model.GetHomeRes;
 import com.example.demo.src.home.model.GetMenuRes;
 import com.example.demo.src.home.model.Menu;
 import com.example.demo.src.home.model.User;
 import com.example.demo.utils.JwtService;
+import de.neuland.pug4j.Pug4J;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -54,8 +57,9 @@ public class HomeController {
     }
 
     @GetMapping("/{userIdx}") // (GET) 127.0.0.1:9000/home
-    public String getHome(Model model, @PathVariable(value = "userIdx", required = false) int userIdx) {
+    public void getHome(@PathVariable(value = "userIdx", required = false) int userIdx) throws IOException {
         //검증 오류 결과를 보관
+        Map<String, Object> model = new HashMap<>();
         Map<String, String> errors = new HashMap<>();
 //            //jwt에서 idx 추출.
 //            int userIdxByJwt = jwtService.getUserIdx();
@@ -67,12 +71,19 @@ public class HomeController {
 
         User user = homeProvider.getHomeUser(userIdx);
         List<Menu> menus = homeProvider.getHome(userIdx);
+<<<<<<< HEAD
         model.addAttribute("user", user);
         model.addAttribute("menus", menus);
         System.out.println("userIdx = " + userIdx);
         System.out.println("menus = " + menus);
 
         return "home/home";
+=======
+        model.put("user", user);
+        model.put("menus", menus);
+        System.out.println("menus = " + menus);
+        String html = Pug4J.render("./home/home.pug", model);
+>>>>>>> 8fc27a342e7a77c52050aed1b1c9f28c43df2be0
     }
 
         /**
