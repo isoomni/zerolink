@@ -22,14 +22,10 @@ public class DiaryProvider {
         this.diaryDao = diaryDao;
     }
 
-    public List<GetDiaryRes> getDiary() throws BaseException {
-        try{
-            List<GetDiaryRes> getDiaryRes = diaryDao.getDiary();
-            return getDiaryRes;
-        }
-        catch (Exception exception) {
-            throw new BaseException(DATABASE_ERROR);
-        }
+    public List<GetDiaryRes> getDiary(){
+        List<GetDiaryRes> getDiaryRes = diaryDao.getDiary();
+        return getDiaryRes;
+
     }
 
 
