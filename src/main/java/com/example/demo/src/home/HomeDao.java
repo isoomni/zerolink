@@ -89,6 +89,42 @@ public class HomeDao {
 
         return menus;
     }
+    public List<Menu> getHome(){
+        // 식당
+        String getUsersQuery3 = "select R.restaurantIdx, R.closeTime, R.restaurantPhone, R.restaurantName, R.status as restaurantStatus,\n" +
+                "       concat(round(6371*acos(cos(radians(?))*cos(radians(R.latitude))*cos(radians(R.longitude)-radians(?))+sin(radians(?))*sin(radians(R.latitude))), 1), 'km') AS distance\n" +
+                "from Restaurant R\n" +
+                "WHERE R.restaurantIdx=?\n" +
+                "HAVING distance <= 10;";
+
+        // 메뉴
+        String getMenuQuery4 = "select M.menuIdx, M.menuImg, M.menuName, M.menuQuantity, M.menuOriginalPrice, M.menuDiscountPrice, M.status as menuStatus, R.restaurantIdx\n" +
+                "from Restaurant R LEFT JOIN Menu M ON R.restaurantIdx = M.restaurantIdx;";
+
+        double latitude = 37.5974476;
+        double longitude = 127.058748;
+        menus = this.jdbcTemplate.query(getMenuQuery4,
+                (rs1, rowNum1) -> new Menu(
+                        rs1.getInt("menuIdx"),
+                        rs1.getString("menuImg"),
+                        rs1.getString("menuName"),
+                        rs1.getInt("menuQuantity"),
+                        rs1.getInt("menuOriginalPrice"),
+                        rs1.getInt("menuDiscountPrice"),
+                        rs1.getString("menuStatus"),
+                        this.jdbcTemplate.queryForObject(getUsersQuery3,
+                                (rs2, rowNum2) -> new Restaurant(
+                                        rs2.getInt("restaurantIdx"),
+                                        rs2.getString("restaurantName"),
+                                        rs2.getString("distance"),
+                                        rs2.getInt("closeTime"),
+                                        rs2.getString("restaurantPhone"),
+                                        rs2.getString("restaurantStatus"))
+                                , latitude, longitude, latitude, rs1.getInt("restaurantIdx"))
+                ));
+
+        return menus;
+    }
 
     // 상세화면 조회
     public GetMenuRes getMenu(int menuIdx) {
