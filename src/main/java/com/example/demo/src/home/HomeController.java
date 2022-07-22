@@ -13,7 +13,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static com.example.demo.config.BaseResponseStatus.INVALID_USER_JWT;
 
@@ -43,7 +45,9 @@ public class HomeController {
     //Query String
 //    @ResponseBody
     @GetMapping("/home/{userIdx}") // (GET) 127.0.0.1:9000/home
-    public String getHome(Model model, @PathVariable(value = "userIdx") int userIdx) throws BaseException {
+    public String getHome(Model model, @PathVariable(value = "userIdx") int userIdx) {
+        //검증 오류 결과를 보관
+        Map<String, String> errors = new HashMap<>();
 //            //jwt에서 idx 추출.
 //            int userIdxByJwt = jwtService.getUserIdx();
 //            //userIdx와 접근한 유저가 같은지 확인
@@ -51,12 +55,12 @@ public class HomeController {
 //                return new BaseResponse<>(INVALID_USER_JWT);
 //            }  // 이 부분까지는 유저가 사용하는 기능 중 유저에 대한 보안이 철저히 필요한 api 에서 사용
             // Get Users
-            System.out.println("userIdx = " + userIdx);
-            User user = homeProvider.getHomeUser(userIdx);
-            List<Menu> menus = homeProvider.getHome(userIdx);
-            model.addAttribute("user", user);
-            model.addAttribute("menus", menus);
-            return "home";
+        System.out.println("userIdx = " + userIdx);
+        User user = homeProvider.getHomeUser(userIdx);
+        List<Menu> menus = homeProvider.getHome(userIdx);
+        model.addAttribute("user", user);
+        model.addAttribute("menus", menus);
+        return "home/home";
     }
 
         /**
