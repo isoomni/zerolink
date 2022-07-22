@@ -1,14 +1,19 @@
 package com.example.demo.src.diary.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-@Getter @Setter @NoArgsConstructor @AllArgsConstructor
+import java.util.List;
+
+@Getter @Setter @NoArgsConstructor @AllArgsConstructor @ToString
 public class GetDiaryRes {
     private int userIdx;
     private String username;
-    private Diary diary;
+    private int diaryIdx;
+    private String diaryContent;
+    private String diaryImg;
+    private String diaryDate;
+    private String status;
+    private List<String> hashtags;
+
 
 }

@@ -22,15 +22,21 @@ public class DiaryProvider {
         this.diaryDao = diaryDao;
     }
 
-    public List<GetDiaryRes> getDiary() throws BaseException {
-        try{
-            List<GetDiaryRes> getDiaryRes = diaryDao.getDiary();
-            return getDiaryRes;
-        }
-        catch (Exception exception) {
-            throw new BaseException(DATABASE_ERROR);
-        }
+    public List<GetDiaryRes> getDiaryList(){
+        List<GetDiaryRes> getDiaryRes = diaryDao.getDiaryList();
+        return getDiaryRes;
+
     }
 
 
+    public GetDiaryRes getDiary(int diaryIdx) {
+        GetDiaryRes getDiaryRes = diaryDao.getDiary(diaryIdx);
+        return getDiaryRes;
+    }
+
+    // 공개 다이어리 여부 확인
+    public boolean isPublicDiary(int diaryIdx) {
+        boolean isPublicDiary = diaryDao.isPublicDiary(diaryIdx);
+        return isPublicDiary;
+    }
 }
