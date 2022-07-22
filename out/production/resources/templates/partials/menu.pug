@@ -1,0 +1,27 @@
+section.product
+    .wrapper
+        .product__col1
+            img(src="/assets/photo/apple.png", alt="")
+            a(href="#") 실시간 수량 알림 신청
+        .product__col2
+            p
+                i.fa-solid.fa-angle-right
+                | #{ restaurantName } (#{ address })
+            p 상품명: #{ menuName }
+            p 수량: #{ menuQuantity }개
+            p.price 가격:
+                del #{ menuOriginalPrice }
+                b #{ menuDiscountPrice }원
+            p
+                i.fa-solid.fa-circle-info
+                | 매장 픽업, 직접 결제
+            p
+                i.fa-solid.fa-clock
+                | 마감 시간: #{ finishTime }시
+            p
+                i.fa-solid.fa-mobile-screen-button
+                | 연락처: 0#{ phoneNum }
+script(
+    src="https://kit.fontawesome.com/271532994e.js",
+    crossorigin="anonymous"
+)

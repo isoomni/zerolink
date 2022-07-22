@@ -1,0 +1,94 @@
+section#main__lower
+  .location
+    i.fa-solid.fa-location-dot
+    | 거리 기준: 한국외국어대학교 서울캠퍼스 (이문동)
+  nav.menuOfMenu
+    ul
+      a(href="#")
+        li.allMenus.focus 전체 상품
+      a(href="#")
+        li.todayMenus 오늘의 상품
+      a(href="#")
+        li.veganMenus 비건 제품
+      a(href="#")
+        li.recylingMenus 리사이클 & 업사이클링
+  .menuList
+    ul
+      a(href=`/home/menu/${menu.menuIdx}`)
+        li.menu
+          img(src=`${menu.menuImg}`, alt="")
+          .info
+          p.store 가게: #{ 가게이름 } (#{ 거리 })
+          p.menu 상품: #{ menu.menuName } (#{ menu.menuQuantity })
+          p
+            span #{ 실제금액 }
+            | #{ 할인금액 } 원
+      a(href="#")
+        li.menu
+          img(src="../../static/images/apple.png", alt="")
+          .info
+          p.store 가게: #{ 가게이름 } (#{ 거리 })
+          p.menu 상품: #{ 상품이름 } (#{ 상품개수 })
+          p
+            span #{ 할인금액 }
+            | #{ 실제금액 } 원
+      a(href="#")
+        li.menu
+          img(src="../../static/images/apple.png", alt="")
+          .info
+          p.store 가게: #{ 가게이름 } (#{ 거리 })
+          p.menu 상품: #{ 상품이름 } (#{ 상품개수 })
+          p
+            span #{ 할인금액 }
+            | #{ 실제금액 } 원
+      a(href="#")
+        li.menu
+          img(src="../../static/images/apple.png", alt="")
+          .info
+          p.store 가게: #{ 가게이름 } (#{ 거리 })
+          p.menu 상품: #{ 상품이름 } (#{ 상품개수 })
+          p
+            span #{ 할인금액 }
+            | #{ 실제금액 } 원
+      a(href="#")
+        li.menu
+          img(src="../../static/images/apple.png", alt="")
+          .info
+          p.store 가게: #{ 가게이름 } (#{ 거리 })
+          p.menu 상품: #{ 상품이름 } (#{ 상품개수 })
+          p
+            span #{ 할인금액 }
+            | #{ 실제금액 } 원
+      a(href="#")
+        li.menu
+          img(src="../../static/images/apple.png", alt="")
+          .info
+          p.store 가게: #{ 가게이름 } (#{ 거리 })
+          p.menu 상품: #{ 상품이름 } (#{ 상품개수 })
+          p
+            span #{ 할인금액 }
+            | #{ 실제금액 } 원
+      a(href="#")
+        li.menu
+          img(src="../../static/images/apple.png", alt="")
+          .info
+          p.store 가게: #{ 가게이름 } (#{ 거리 })
+          p.menu 상품: #{ 상품이름 } (#{ 상품개수 })
+          p
+            span #{ 할인금액 }
+            | #{ 실제금액 } 원
+      a(href="#")
+        li.menu
+          img(src="../../static/images/apple.png", alt="")
+          .info
+          p.store 가게: #{ 가게이름 } (#{ 거리 })
+          p.menu 상품: #{ 상품이름 } (#{ 상품개수 })
+          p
+            span #{ 할인금액 }
+            | #{ 실제금액 } 원
+
+  button.moreBtn 더보기
+script(
+  src="https://kit.fontawesome.com/271532994e.js",
+  crossorigin="anonymous"
+)

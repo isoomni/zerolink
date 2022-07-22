@@ -1,0 +1,28 @@
+doctype html
+html(lang="ko")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(
+            rel="stylesheet",
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        )
+        link(rel="stylesheet", href="../../static/css/styles.css")
+        title | hack
+    body.detail
+        include ../partials/header
+        include ../partials/menu
+        main
+            block content
+                .location
+                    i.fa-solid.fa-location-dot
+                    // #{ addressDetail }
+                .map
+                    p 서비스 개발 중입니다. 조금만 기다려 주세요.
+
+    script(
+        src="https://kit.fontawesome.com/271532994e.js",
+        crossorigin="anonymous"
+    )
+    script(src="../../static/js/main.js")
