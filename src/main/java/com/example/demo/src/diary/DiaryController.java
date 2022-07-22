@@ -118,6 +118,7 @@ public class DiaryController {
         return "diary/calendar";
     }
 
+    // 윤년 여부 확인
     public boolean isLeapYear(int year) {
         if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0)
             return true;

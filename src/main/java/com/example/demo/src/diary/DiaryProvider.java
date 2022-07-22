@@ -22,13 +22,14 @@ public class DiaryProvider {
         this.diaryDao = diaryDao;
     }
 
+    // 공개 다이어리 조회
     public List<GetDiaryRes> getDiaryList(){
         List<GetDiaryRes> getDiaryRes = diaryDao.getDiaryList();
         return getDiaryRes;
 
     }
 
-
+    // 다이어리 세부 조회
     public GetDiaryRes getDiary(int diaryIdx) {
         GetDiaryRes getDiaryRes = diaryDao.getDiary(diaryIdx);
         return getDiaryRes;
@@ -40,6 +41,7 @@ public class DiaryProvider {
         return isPublicDiary;
     }
 
+    // 일기 작성한 날
     public List<Integer> getCalendar(int userIdx, int year, int month, int dayMax) {
         List<Integer> dates = diaryDao.getCalendar(userIdx, year, month);
         return dates;

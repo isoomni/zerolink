@@ -114,10 +114,10 @@ public class DiaryDao {
         return diaryIdx;
     }
 
+    // 일기 작성한 날
     public List<Integer> getCalendar(int userIdx, int year, int month) {
-        String Query = "SELECT DISTINCT DATE_FORMAT(diaryDate, '%e') as date FROM Diary WHERE userIdx=? AND DATE_FORMAT(diaryDate, '%Y') = ? AND DATE_FORMAT(diaryDate, '%c') = ?;";
+        String Query = "SELECT DISTINCT DATE_FORMAT(diaryDate, '%e') FROM Diary WHERE userIdx=? AND DATE_FORMAT(diaryDate, '%Y') = ? AND DATE_FORMAT(diaryDate, '%c') = ? AND status='Y';";
 
-        List<Integer> dates = new ArrayList<>();
         return this.jdbcTemplate.query(Query,
                 (rs, rowNum) -> {
                     return rs.getInt("date");
