@@ -14,78 +14,15 @@ section#main__lower
         li.recylingMenus 리사이클 & 업사이클링
   .menuList
     ul
-      a(href=`/home/menu/${menu.menuIdx}`)
+      a(href=`/home/${menus[0].menuIdx}`)
         li.menu
-          img(src=`${menu.menuImg}`, alt="")
+          img(src=`${menus[0].menuImg}`, alt="")
           .info
-          p.store 가게: #{ 가게이름 } (#{ 거리 })
-          p.menu 상품: #{ menu.menuName } (#{ menu.menuQuantity })
+          p.store 가게: #{ menus[0].restaurantName } (#{ menus[0].distance })
+          p.menu 상품: #{ menus[0].menuName } (#{ menus[0].menuQuantity })
           p
-            span #{ 실제금액 }
-            | #{ 할인금액 } 원
-      a(href="#")
-        li.menu
-          img(src="../../static/images/apple.png", alt="")
-          .info
-          p.store 가게: #{ 가게이름 } (#{ 거리 })
-          p.menu 상품: #{ 상품이름 } (#{ 상품개수 })
-          p
-            span #{ 할인금액 }
-            | #{ 실제금액 } 원
-      a(href="#")
-        li.menu
-          img(src="../../static/images/apple.png", alt="")
-          .info
-          p.store 가게: #{ 가게이름 } (#{ 거리 })
-          p.menu 상품: #{ 상품이름 } (#{ 상품개수 })
-          p
-            span #{ 할인금액 }
-            | #{ 실제금액 } 원
-      a(href="#")
-        li.menu
-          img(src="../../static/images/apple.png", alt="")
-          .info
-          p.store 가게: #{ 가게이름 } (#{ 거리 })
-          p.menu 상품: #{ 상품이름 } (#{ 상품개수 })
-          p
-            span #{ 할인금액 }
-            | #{ 실제금액 } 원
-      a(href="#")
-        li.menu
-          img(src="../../static/images/apple.png", alt="")
-          .info
-          p.store 가게: #{ 가게이름 } (#{ 거리 })
-          p.menu 상품: #{ 상품이름 } (#{ 상품개수 })
-          p
-            span #{ 할인금액 }
-            | #{ 실제금액 } 원
-      a(href="#")
-        li.menu
-          img(src="../../static/images/apple.png", alt="")
-          .info
-          p.store 가게: #{ 가게이름 } (#{ 거리 })
-          p.menu 상품: #{ 상품이름 } (#{ 상품개수 })
-          p
-            span #{ 할인금액 }
-            | #{ 실제금액 } 원
-      a(href="#")
-        li.menu
-          img(src="../../static/images/apple.png", alt="")
-          .info
-          p.store 가게: #{ 가게이름 } (#{ 거리 })
-          p.menu 상품: #{ 상품이름 } (#{ 상품개수 })
-          p
-            span #{ 할인금액 }
-            | #{ 실제금액 } 원
-      a(href="#")
-        li.menu
-          img(src="../../static/images/apple.png", alt="")
-          .info
-          p.store 가게: #{ 가게이름 } (#{ 거리 })
-          p.menu 상품: #{ 상품이름 } (#{ 상품개수 })
-          p
-            span #{ 할인금액 }
-            | #{ 실제금액 } 원
+            span #{ menus[0].menuOriginalPrice }
+            | #{ menus[0].menuDiscountPrice } 원
 
   button.moreBtn 더보기
 script(

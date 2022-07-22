@@ -11,13 +11,13 @@ html(lang="ko")
         link(rel="stylesheet", href="../../static/css/styles.css")
         title | hack
     body.detail
-        include partials/header
-        include partials/menu
+        include ../partials/header
+        include ../partials/menu
         main
             block content
                 .location
                     i.fa-solid.fa-location-dot
-                    | #{ addressDetail }
+                    // #{ addressDetail }
                 .map
                     p 서비스 개발 중입니다. 조금만 기다려 주세요.
 

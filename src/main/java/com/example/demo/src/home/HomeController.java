@@ -2,7 +2,6 @@ package com.example.demo.src.home;
 
 import com.example.demo.config.BaseException;
 import com.example.demo.config.BaseResponse;
-import com.example.demo.src.home.model.GetHomeRes;
 import com.example.demo.src.home.model.GetMenuRes;
 import com.example.demo.src.home.model.Menu;
 import com.example.demo.src.home.model.User;
@@ -19,8 +18,6 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import static com.example.demo.config.BaseResponseStatus.INVALID_USER_JWT;
 
 @Controller
 @RequestMapping("/home")
@@ -74,7 +71,7 @@ public class HomeController {
         model.put("user", user);
         model.put("menus", menus);
         System.out.println("menus = " + menus);
-        String html = Pug4J.render("./home/home.pug", model);
+        String html = Pug4J.render("./home.pug", model);
     }
 
         /**

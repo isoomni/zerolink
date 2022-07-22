@@ -31,9 +31,9 @@
         .tree
           img(src="../../static/images/tree.png", alt="")
           if {userIdx}
-            p.data1 100#{ progress1 }
-            p.data2 200#{ progress2 }
-            p.data3 300#{ progress3 }
+            p.data1 #{ menus[0].progress }
+            p.data2 #{ menus[0].progress }
+            p.data3 #{ menus[0].progress }
           else
             p 회원가입 하셔서 챌린지에 참여해보세요!
   .buttons

@@ -1,12 +1,12 @@
 section.product
     .wrapper
         .product__col1
-            img(src="/assets/photo/apple.png", alt="")
+            img(src="../../static/images/apple.png", alt="")
             a(href="#") 실시간 수량 알림 신청
         .product__col2
             p
                 i.fa-solid.fa-angle-right
-                | #{ restaurantName } (#{ address })
+                | #{ menus[0].restaurantName } (#{ address })
             p 상품명: #{ menuName }
             p 수량: #{ menuQuantity }개
             p.price 가격:
