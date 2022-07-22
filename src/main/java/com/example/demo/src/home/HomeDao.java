@@ -23,8 +23,7 @@ public class HomeDao {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 
-
-    public GetHomeRes getHome(int userIdx){
+    public User getHomeUser(int userIdx) {
         // 유저
         String getUsersQuery1 = "select userIdx, userName from User where userIdx=?;";
 
@@ -32,7 +31,22 @@ public class HomeDao {
         String getUsersQuery2 = "select UC.userIdx, C.challengeName, UC.progress\n" +
                 "from UserChallenge UC LEFT JOIN Challenge C ON C.challengeIdx = UC.challengeIdx\n" +
                 "where userIdx=?;";
+        challenges = this.jdbcTemplate.query(getUsersQuery2,
+                (rs, rowNum)-> new Challenge(
+                        rs.getString("challengeName"),
+                        rs.getInt("progress")
+                ), userIdx);
+        user = this.jdbcTemplate.queryForObject(getUsersQuery1,
+                (rs, rowNum)-> new User(
+                        rs.getInt("userIdx"),
+                        rs.getString("username"),
+                        challenges
+                ), userIdx);
 
+        return user;
+    }
+
+    public List<Menu> getHome(int userIdx){
         // 식당
         String getUsersQuery3 = "select R.restaurantIdx, R.closeTime, R.restaurantPhone, R.restaurantName, R.status as restaurantStatus,\n" +
                 "       concat(round(6371*acos(cos(radians(?))*cos(radians(R.latitude))*cos(radians(R.longitude)-radians(?))+sin(radians(?))*sin(radians(R.latitude))), 1), 'km') AS distance\n" +
@@ -51,18 +65,6 @@ public class HomeDao {
                 (rs, rowNum)-> new UserLocation(
                         rs.getDouble("latitude"),
                         rs.getDouble("longitude")
-                ), userIdx);
-
-        challenges = this.jdbcTemplate.query(getUsersQuery2,
-                (rs, rowNum)-> new Challenge(
-                        rs.getString("challengeName"),
-                        rs.getInt("progress")
-                ), userIdx);
-        user = this.jdbcTemplate.queryForObject(getUsersQuery1,
-                (rs, rowNum)-> new User(
-                        rs.getInt("userIdx"),
-                        rs.getString("username"),
-                        challenges
                 ), userIdx);
 
         menus = this.jdbcTemplate.query(getMenuQuery4,
@@ -85,7 +87,7 @@ public class HomeDao {
                                 , userLocation.getLatitude(), userLocation.getLongitude(), userLocation.getLatitude(), rs1.getInt("restaurantIdx"))
                 ));
 
-        return new GetHomeRes(user, menus);
+        return menus;
     }
 
     // 상세화면 조회

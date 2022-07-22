@@ -2,20 +2,23 @@ package com.example.demo.src.home;
 
 import com.example.demo.config.BaseException;
 import com.example.demo.config.BaseResponse;
-import com.example.demo.src.home.model.GetHomeRes;
 import com.example.demo.src.home.model.GetMenuRes;
+import com.example.demo.src.home.model.Menu;
+import com.example.demo.src.home.model.User;
 import com.example.demo.utils.JwtService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 import static com.example.demo.config.BaseResponseStatus.INVALID_USER_JWT;
 
-@RestController
-@RequestMapping("/home")
+@Controller
+//@RequestMapping("/home")
 public class HomeController {
     final Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -38,10 +41,9 @@ public class HomeController {
      * @return BaseResponse<GetHomeRes>
      */
     //Query String
-    @ResponseBody
-    @GetMapping("/{userIdx}") // (GET) 127.0.0.1:9000/home
-    public BaseResponse<GetHomeRes> getHome(@PathVariable(value = "userIdx") int userIdx) {
-        try{
+//    @ResponseBody
+    @GetMapping("/home/{userIdx}") // (GET) 127.0.0.1:9000/home
+    public String getHome(Model model, @PathVariable(value = "userIdx") int userIdx) throws BaseException {
 //            //jwt에서 idx 추출.
 //            int userIdxByJwt = jwtService.getUserIdx();
 //            //userIdx와 접근한 유저가 같은지 확인
@@ -50,21 +52,20 @@ public class HomeController {
 //            }  // 이 부분까지는 유저가 사용하는 기능 중 유저에 대한 보안이 철저히 필요한 api 에서 사용
             // Get Users
             System.out.println("userIdx = " + userIdx);
-            GetHomeRes getHomeRes = homeProvider.getHome(userIdx);
-            return new BaseResponse<>(getHomeRes);
-
-        } catch(BaseException exception){
-            return new BaseResponse<>(exception.getStatus());
-        }
+            User user = homeProvider.getHomeUser(userIdx);
+            List<Menu> menus = homeProvider.getHome(userIdx);
+            model.addAttribute("user", user);
+            model.addAttribute("menus", menus);
+            return "home";
     }
 
-    /**
+        /**
      * 메뉴 상세 조회 API
      * [GET] /menu/{menuIdx}
      * @return BaseResponse<GetHomeRes>
      */
     @ResponseBody
-    @GetMapping("/menu/{menuIdx}") // (GET) 127.0.0.1:9000/home
+    @GetMapping("/home/menu/{menuIdx}") // (GET) 127.0.0.1:9000/home
     public BaseResponse<GetMenuRes> getMenu(@PathVariable(value = "menuIdx") int menuIdx) {
         try{
             // Get Users
@@ -82,7 +83,7 @@ public class HomeController {
      * @return String
      */
     @ResponseBody
-    @GetMapping("/log")
+    @GetMapping("/home/log")
     public String getAll() {
         System.out.println("테스트");
 //        trace, debug 레벨은 Console X, 파일 로깅 X

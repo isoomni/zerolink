@@ -1,14 +1,17 @@
 package com.example.demo.src.home;
 
 import com.example.demo.config.BaseException;
-import com.example.demo.src.home.model.GetHomeRes;
 import com.example.demo.src.home.model.GetMenuRes;
+import com.example.demo.src.home.model.Menu;
+import com.example.demo.src.home.model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 import static com.example.demo.config.BaseResponseStatus.DATABASE_ERROR;
 
@@ -24,10 +27,20 @@ public class HomeProvider {
         this.homeDao = homeDao;
     }
 
-    public GetHomeRes getHome(int userIdx) throws BaseException {
+    public User getHomeUser(int userIdx) throws BaseException {
         try{
-            GetHomeRes getHomeRes = homeDao.getHome(userIdx);
-            return getHomeRes;
+            User user = homeDao.getHomeUser(userIdx);
+            return user;
+        }
+        catch (Exception exception) {
+            throw new BaseException(DATABASE_ERROR);
+        }
+    }
+
+    public List<Menu> getHome(int userIdx) throws BaseException {
+        try{
+            List<Menu> menus = homeDao.getHome(userIdx);
+            return menus;
         }
         catch (Exception exception) {
             throw new BaseException(DATABASE_ERROR);
