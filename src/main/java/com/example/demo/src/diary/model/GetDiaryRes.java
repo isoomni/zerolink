@@ -8,7 +8,6 @@ import java.util.List;
 public class GetDiaryRes {
     private int userIdx;
     private String username;
-//    private Diary diary;
     private int diaryIdx;
     private String diaryContent;
     private String diaryImg;
