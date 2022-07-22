@@ -46,6 +46,7 @@ public class HomeDao {
         return user;
     }
 
+
     public List<Menu> getHome(int userIdx){
         // 식당
         String getUsersQuery3 = "select R.restaurantIdx, R.closeTime, R.restaurantPhone, R.restaurantName, R.status as restaurantStatus,\n" +
@@ -89,6 +90,8 @@ public class HomeDao {
 
         return menus;
     }
+
+
     public List<Menu> getHome(){
         // 식당
         String getUsersQuery3 = "select R.restaurantIdx, R.closeTime, R.restaurantPhone, R.restaurantName, R.status as restaurantStatus,\n" +

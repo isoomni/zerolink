@@ -68,13 +68,22 @@ public class HomeController {
 //                return new BaseResponse<>(INVALID_USER_JWT);
 //            }  // 이 부분까지는 유저가 사용하는 기능 중 유저에 대한 보안이 철저히 필요한 api 에서 사용
             // Get Users
-        System.out.println("userIdx = " + userIdx);
+
         User user = homeProvider.getHomeUser(userIdx);
         List<Menu> menus = homeProvider.getHome(userIdx);
+<<<<<<< HEAD
+        model.addAttribute("user", user);
+        model.addAttribute("menus", menus);
+        System.out.println("userIdx = " + userIdx);
+        System.out.println("menus = " + menus);
+
+        return "home/home";
+=======
         model.put("user", user);
         model.put("menus", menus);
         System.out.println("menus = " + menus);
         String html = Pug4J.render("./home/home.pug", model);
+>>>>>>> 8fc27a342e7a77c52050aed1b1c9f28c43df2be0
     }
 
         /**
