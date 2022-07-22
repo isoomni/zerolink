@@ -39,4 +39,9 @@ public class DiaryProvider {
         boolean isPublicDiary = diaryDao.isPublicDiary(diaryIdx);
         return isPublicDiary;
     }
+
+    public List<Integer> getCalendar(int userIdx, int year, int month, int dayMax) {
+        List<Integer> dates = diaryDao.getCalendar(userIdx, year, month);
+        return dates;
+    }
 }

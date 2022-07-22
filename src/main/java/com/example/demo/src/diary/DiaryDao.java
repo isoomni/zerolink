@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -111,5 +112,16 @@ public class DiaryDao {
         }
 
         return diaryIdx;
+    }
+
+    public List<Integer> getCalendar(int userIdx, int year, int month) {
+        String Query = "SELECT DISTINCT DATE_FORMAT(diaryDate, '%e') as date FROM Diary WHERE userIdx=? AND DATE_FORMAT(diaryDate, '%Y') = ? AND DATE_FORMAT(diaryDate, '%c') = ?;";
+
+        List<Integer> dates = new ArrayList<>();
+        return this.jdbcTemplate.query(Query,
+                (rs, rowNum) -> {
+                    return rs.getInt("date");
+                }, userIdx, Integer.toString(year), Integer.toString(month));
+
     }
 }
