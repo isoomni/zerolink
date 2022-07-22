@@ -27,24 +27,17 @@ public class HomeProvider {
         this.homeDao = homeDao;
     }
 
-    public User getHomeUser(int userIdx) throws BaseException {
-        try{
-            User user = homeDao.getHomeUser(userIdx);
-            return user;
-        }
-        catch (Exception exception) {
-            throw new BaseException(DATABASE_ERROR);
-        }
+    public User getHomeUser(int userIdx){
+        User user = homeDao.getHomeUser(userIdx);
+        return user;
+
     }
 
-    public List<Menu> getHome(int userIdx) throws BaseException {
-        try{
-            List<Menu> menus = homeDao.getHome(userIdx);
-            return menus;
-        }
-        catch (Exception exception) {
-            throw new BaseException(DATABASE_ERROR);
-        }
+    public List<Menu> getHome(int userIdx) {
+
+        List<Menu> menus = homeDao.getHome(userIdx);
+        return menus;
+
     }
 
     public GetMenuRes getMenu(int menuIdx) throws BaseException {
