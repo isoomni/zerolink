@@ -61,9 +61,8 @@ public class HomeController {
     }
 
     @GetMapping("/{userIdx}") // (GET) 127.0.0.1:9000/home
-    public void getHome(@PathVariable(value = "userIdx", required = false) int userIdx) throws IOException {
+    public String getHome(Model model, @PathVariable(value = "userIdx") int userIdx){
         //검증 오류 결과를 보관
-        Map<String, Object> model = new HashMap<>();
         Map<String, String> errors = new HashMap<>();
 //            //jwt에서 idx 추출.
 //            int userIdxByJwt = jwtService.getUserIdx();
@@ -75,11 +74,10 @@ public class HomeController {
 
         User user = homeProvider.getHomeUser(userIdx);
         List<Menu> menus = homeProvider.getHome(userIdx);
-        model.put("user", user);
-        model.put("menus", menus);
-        System.out.println("menus = " + menus);
-        String html = Pug4J.render("./home.pug", model);
+        model.addAttribute("user", user);
+        model.addAttribute("menus", menus);
 
+        return "home/home";
     }
 
         /**
@@ -89,15 +87,12 @@ public class HomeController {
      */
     @ResponseBody
     @GetMapping("/home/menu/{menuIdx}") // (GET) 127.0.0.1:9000/home
-    public BaseResponse<GetMenuRes> getMenu(@PathVariable(value = "menuIdx") int menuIdx) {
-        try{
-            // Get Users
-            GetMenuRes getMenuRes = homeProvider.getMenu(menuIdx);
-            return new BaseResponse<>(getMenuRes);
+    public String getMenu(Model model, @PathVariable(value = "menuIdx") int menuIdx) {
 
-        } catch(BaseException exception){
-            return new BaseResponse<>((exception.getStatus()));
-        }
+        GetMenuRes getMenuRes = homeProvider.getMenu(menuIdx);
+        model.addAttribute("menu", getMenuRes);
+        return "home/menu";
+
     }
 
     /**

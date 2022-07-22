@@ -43,14 +43,11 @@ public class HomeProvider {
         return menus;
     }
 
-    public GetMenuRes getMenu(int menuIdx) throws BaseException {
-        try{
-            GetMenuRes getMenures = homeDao.getMenu(menuIdx);
-            return getMenures;
-        }
-        catch (Exception exception) {
-            throw new BaseException(DATABASE_ERROR);
-        }
+    public GetMenuRes getMenu(int menuIdx) {
+
+        GetMenuRes getMenures = homeDao.getMenu(menuIdx);
+        return getMenures;
+
     }
 
     /**
