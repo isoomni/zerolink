@@ -57,7 +57,7 @@ public class HomeController {
         List<Menu> menus = homeProvider.getHome();
         model.addAttribute("menus", menus);
         System.out.println("menus = " + menus);
-        return "home/home";
+        return "home/main";
     }
 
     @GetMapping("/{userIdx}") // (GET) 127.0.0.1:9000/home
@@ -77,7 +77,7 @@ public class HomeController {
         model.addAttribute("user", user);
         model.addAttribute("menus", menus);
 
-        return "home/home";
+        return "home/main";
     }
 
         /**
@@ -91,7 +91,7 @@ public class HomeController {
 
         GetMenuRes getMenuRes = homeProvider.getMenu(menuIdx);
         model.addAttribute("menu", getMenuRes);
-        return "home/menu";
+        return "home/showMenu";
 
     }
 
