@@ -2,14 +2,18 @@ package com.example.demo.src.home;
 
 import com.example.demo.config.BaseException;
 import com.example.demo.config.BaseResponse;
+import com.example.demo.config.BaseResponseStatus;
+import com.example.demo.src.home.model.GetHomeRes;
 import com.example.demo.src.home.model.GetMenuRes;
 import com.example.demo.src.home.model.Menu;
 import com.example.demo.src.home.model.User;
 import com.example.demo.utils.JwtService;
+import com.fasterxml.jackson.databind.ser.Serializers;
 import de.neuland.pug4j.Pug4J;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +23,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Controller
+import static com.example.demo.config.BaseResponseStatus.DATABASE_ERROR;
+
+@RestController
 @RequestMapping("/home")
 public class HomeController {
     final Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -50,18 +56,21 @@ public class HomeController {
      * @return BaseResponse<GetHomeRes>
      */
     //Query String
+    @ResponseBody
     @GetMapping("") // (GET) 127.0.0.1:9000/home
-    public String getHome(Model model) {
+    public BaseResponse<List<Menu>> getHome(Model model) throws BaseException {
         //검증 오류 결과를 보관
         Map<String, String> errors = new HashMap<>();
         List<Menu> menus = homeProvider.getHome();
         model.addAttribute("menus", menus);
         System.out.println("menus = " + menus);
-        return "home/main";
+//        return "home/main";
+        return new BaseResponse<>(menus);
     }
 
+    @ResponseBody
     @GetMapping("/{userIdx}") // (GET) 127.0.0.1:9000/home
-    public String getHome(Model model, @PathVariable(value = "userIdx") int userIdx){
+    public BaseResponse<GetHomeRes> getHome(@PathVariable(value = "userIdx") int userIdx) throws BaseException{
         //검증 오류 결과를 보관
         Map<String, String> errors = new HashMap<>();
 //            //jwt에서 idx 추출.
@@ -71,13 +80,18 @@ public class HomeController {
 //                return new BaseResponse<>(INVALID_USER_JWT);
 //            }  // 이 부분까지는 유저가 사용하는 기능 중 유저에 대한 보안이 철저히 필요한 api 에서 사용
             // Get Users
+        try {
+            User user = homeProvider.getHomeUser(userIdx);
+            List<Menu> menus = homeProvider.getHome(userIdx);
+//            model.addAttribute("user", user);
+//            model.addAttribute("menus", menus);
+            GetHomeRes getHomeRes = new GetHomeRes(user, menus);
+            return new BaseResponse<>(getHomeRes);
+        } catch (BaseException exception) {
+            return new BaseResponse<>(DATABASE_ERROR);
+        }
 
-        User user = homeProvider.getHomeUser(userIdx);
-        List<Menu> menus = homeProvider.getHome(userIdx);
-        model.addAttribute("user", user);
-        model.addAttribute("menus", menus);
-
-        return "home/main";
+//        return "home/main";
     }
 
         /**
@@ -85,14 +99,13 @@ public class HomeController {
      * [GET] /menu/{menuIdx}
      * @return BaseResponse<GetHomeRes>
      */
-    @ResponseBody
-    @GetMapping("/home/menu/{menuIdx}") // (GET) 127.0.0.1:9000/home
-    public String getMenu(Model model, @PathVariable(value = "menuIdx") int menuIdx) {
-
+    @GetMapping("/menu/{menuIdx}") // (GET) 127.0.0.1:9000/home
+    public BaseResponse<GetMenuRes> getMenu(Model model, @PathVariable(value = "menuIdx") int menuIdx) throws BaseException {
+        Map<String, String> errors = new HashMap<>();
         GetMenuRes getMenuRes = homeProvider.getMenu(menuIdx);
         model.addAttribute("menu", getMenuRes);
-        return "home/showMenu";
-
+        return new BaseResponse<>(getMenuRes);
+//        return "home/showMenu";
     }
 
     /**
@@ -101,7 +114,7 @@ public class HomeController {
      * @return String
      */
     @ResponseBody
-    @GetMapping("/home/log")
+    @GetMapping("/log")
     public String getAll() {
         System.out.println("테스트");
 //        trace, debug 레벨은 Console X, 파일 로깅 X

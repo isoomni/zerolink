@@ -4,11 +4,31 @@ server:
 spring:
   application:
     name: demo
-
   datasource:
-    platform: mysql
-    url: jdbc:mysql://zero-link.crnudsama3c6.ap-northeast-2.rds.amazonaws.com/zero-link?autoReconnect=true # 변경해주세요
-    username: zero # 변경해주세요
-    password: Zero1234!! # 변경해주세요
-    driver-class-name: com.mysql.cj.jdbc.Driver # mysql 8버전
-    # driver-class-name: com.mysql.jdbc.Driver # mysql 5버전
+    platform : h2
+    url : jdbc:h2:mem:16f6c493-34ad-45f2-bbdb-53ba97c60429
+  h2:
+    console:
+      enabled: true
+
+#  datasource:
+#    url : jdbc:h2:file:C:/data/sample
+#    driverClassName : org.h2.Driver
+#    username : sa
+#    password : password
+#  datasource:
+#    platform: mysql
+#    url: jdbc:mysql://zero-link.crnudsama3c6.ap-northeast-2.rds.amazonaws.com/zero-link?autoReconnect=true&validationQuery=select 1 # 변경해주세요
+#    username: zero # 변경해주세요
+#    password: Zero1234!! # 변경해주세요
+#    driver-class-name: com.mysql.cj.jdbc.Driver # mysql 8버전
+#    # driver-class-name: com.mysql.jdbc.Driver # mysql 5버전
+
+
+    hikari:
+      connectionTimeout : 30000
+      maximumPoolSize : 10
+      maxLifetime : 1800000
+      poolName : HikariCP
+      readOnly : false
+      connectionTestQuery : SELECT 1

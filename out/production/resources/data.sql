@@ -1,0 +1,1 @@
+INSERT INTO Hashtag (hashtagContent, isChallenge, createdAt, updatedAt, status) VALUES ('페트병뚜껑_모으기', DEFAULT, DEFAULT, DEFAULT, DEFAULT);

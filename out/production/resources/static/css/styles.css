@@ -1,6 +1,4 @@
-/*!**********************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/client/scss/styles.scss ***!
-  \**********************************************************************************************************************/
+@import url("https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap");
 html,
 body,
 div,
@@ -132,104 +130,17 @@ table {
   border-spacing: 0;
 }
 
-body.detail {
-  background: linear-gradient(#94e1e1, #cce6a8);
-}
-body.detail header nav ul a.login {
-  background-color: #83c2be;
-}
-body.detail main {
-  margin: 50px 150px;
-  color: black;
-  font-size: 25px;
-}
-body.detail main .location {
-  margin-bottom: 50px;
-}
-body.detail main .location i {
-  margin-right: 10px;
-}
-body.detail main .map {
-  font-size: 22px;
-}
-
-#login {
-  width: 100%;
-  height: 100vh;
-}
-#login .login__wrapper {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-#login .login__wrapper h2 {
-  font-size: 40px;
-  font-weight: 600;
-  margin-bottom: 30px;
-}
-#login .login__wrapper form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-#login .login__wrapper form input {
-  margin: 15px 0px;
-  padding: 20px;
-  width: 440px;
-  border: none;
-  border-radius: 20px;
-  font-size: 22px;
-}
-#login .login__wrapper form input.loginBtn {
-  width: 470px;
-  background-color: rgb(52, 152, 219);
-  color: white;
-  text-align: center;
-  padding: 13px;
-  cursor: pointer;
-}
-#login .login__wrapper .btns {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-#login .login__wrapper .btns a {
-  width: 440px;
-  margin: 8px 0px;
-  border: none;
-  border-radius: 10px;
-  font-size: 16px;
-  font-weight: 500;
-  padding: 15px;
-  color: black;
-  text-align: center;
-}
-#login .login__wrapper .btns a.kakaoBtn {
-  background-color: #ffeb4a;
-}
-#login .login__wrapper .btns a.googleBtn {
-  background-color: white;
-}
-#login .login__wrapper .btns a.signUpBtn {
-  background-color: rgb(224, 224, 224);
-}
-#login .login__wrapper a.findPW {
-  margin-top: 10px;
-  text-decoration: underline;
-}
-
 header {
   position: fixed;
-  width: 100vw;
+  width: 100%;
 }
 header nav ul {
-  padding: 15px 0px;
+  margin: 15px 0px;
+  padding: 5px 0px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 20px;
+  font-size: 23px;
   font-weight: 600;
 }
 header nav ul a {
@@ -238,23 +149,23 @@ header nav ul a {
 header nav ul a.logo {
   margin-left: 20px;
   margin-right: 90px;
-  display: flex;
-  align-items: center;
-}
-header nav ul a.logo img {
-  width: 50px;
-  margin-right: 10px;
 }
 header nav ul a.logo li {
+  display: flex;
+  align-items: center;
   font-size: 30px;
 }
-header nav ul a.login,
-header nav ul a.logout {
+header nav ul a.logo li img {
+  width: 40px;
+  margin-right: 8px;
+}
+header nav ul a.login {
   margin-right: 20px;
   padding: 10px 30px;
+  border-radius: 5px;
+  background-color: rgb(105, 134, 211);
 }
-header nav ul a.login li,
-header nav ul a.logout li {
+header nav ul a.login li {
   font-weight: 400;
   font-size: 20px;
 }
@@ -267,31 +178,26 @@ header nav ul a.logout li {
   header nav ul a.login {
     display: block;
   }
-  header nav ul a.logo {
-    display: flex;
-  }
-  header nav ul a.logo img {
-    width: 30px;
-  }
 }
 @media screen and (max-width: 770px) {
+  header nav ul {
+    margin: 5px 0px;
+  }
   header nav ul a.logo {
-    margin-left: 10px;
+    margin-left: 5px;
     margin-right: 0;
   }
   header nav ul a.logo li {
-    font-size: 20px;
+    font-size: 15px;
   }
-  header nav ul a.logo img {
+  header nav ul a.logo li img {
     width: 20px;
   }
-  header nav ul a.login,
-  header nav ul a.logout {
+  header nav ul a.login {
     margin-right: 10px;
     padding: 8px 15px;
   }
-  header nav ul a.login li,
-  header nav ul a.logout li {
+  header nav ul a.login li {
     font-size: 13px;
   }
 }
@@ -314,8 +220,8 @@ header nav ul a.logout li {
 .container .slider .page2 {
   width: 50%;
   padding: 0 170px;
-  margin-top: 210px;
-  margin-bottom: 55px;
+  margin-top: 230px;
+  margin-bottom: 70px;
 }
 .container .slider .page1 {
   display: flex;
@@ -332,6 +238,7 @@ header nav ul a.logout li {
 }
 .container .slider .page1 .page1__col1 img.desc__row2 {
   width: 400px;
+  height: 100px;
   margin-bottom: 20px;
 }
 .container .slider .page1 .page1__col1 .desc__row3 p {
@@ -352,11 +259,9 @@ header nav ul a.logout li {
   left: -200px;
   top: -80px;
   width: 270px;
-  height: 270px;
 }
 .container .slider .page1 .page1__col2 img.people {
   width: 280px;
-  height: 250px;
 }
 .container .slider .page2 {
   display: grid;
@@ -386,7 +291,7 @@ header nav ul a.logout li {
 .container .slider .page2 .page2__col1 .apple1 p,
 .container .slider .page2 .page2__col1 .apple2 p {
   text-align: center;
-  font-size: 23px;
+  font-size: 27px;
   color: white;
   font-family: "Black Han Sans", sans-serif;
 }
@@ -399,7 +304,7 @@ header nav ul a.logout li {
   position: relative;
 }
 .container .slider .page2 .page2__col1 .apple1 .wrapper1 p {
-  width: 35%;
+  width: 31%;
   position: absolute;
   top: -90px;
   left: 22px;
@@ -415,13 +320,12 @@ header nav ul a.logout li {
 .container .slider .page2 .page2__col1 .apple2 .wrapper2 p {
   width: 30%;
   position: absolute;
-  top: -103px;
-  left: 29px;
+  top: -107px;
+  left: 25px;
 }
 .container .slider .page2 .page2__col2 {
   flex-direction: column;
   align-items: center;
-  justify-content: center;
 }
 .container .slider .page2 .page2__col2 .col2__row1,
 .container .slider .page2 .page2__col2 .col2__row2 {
@@ -448,7 +352,7 @@ header nav ul a.logout li {
   position: relative;
 }
 .container .slider .page2 .page2__col3 .tree img {
-  width: 330px;
+  width: 400px;
 }
 .container .slider .page2 .page2__col3 .tree p {
   position: absolute;
@@ -458,15 +362,15 @@ header nav ul a.logout li {
 }
 .container .slider .page2 .page2__col3 .tree p.data1 {
   bottom: 143px;
-  left: 45px;
+  left: 80px;
 }
 .container .slider .page2 .page2__col3 .tree p.data2 {
   bottom: 227px;
-  left: 165px;
+  left: 200px;
 }
 .container .slider .page2 .page2__col3 .tree p.data3 {
   bottom: 138px;
-  left: 240px;
+  left: 275px;
 }
 .container .buttons {
   width: 100px;
@@ -482,72 +386,51 @@ header nav ul a.logout li {
   cursor: pointer;
 }
 
-body.detail section.product {
-  padding-top: 80px;
+@media screen and (max-width: 1300px) {
+  .container .slider .page1,
+  .container .slider .page2 {
+    padding: 0 70px;
+  }
+  .container .slider .page1 {
+    justify-content: center;
+  }
+  .container .slider .page1 .page1__col2 {
+    margin-left: 40px;
+    position: static;
+  }
+  .container .slider .page1 .page1__col2 img.link {
+    position: static;
+    width: 220px;
+  }
+  .container .slider .page1 .page1__col2 img.people {
+    display: none;
+  }
+  .container .slider .page2 {
+    padding: 0 30px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .container .slider .page2 .page2__col1 {
+    display: none;
+  }
 }
-body.detail section.product .wrapper {
-  background-color: #83c2be;
-  display: flex;
-  justify-content: center;
-  padding: 85px 180px;
-  color: black;
+@media screen and (max-width: 770px) {
+  .container .slider .page1,
+  .container .slider .page2 {
+    padding: 0;
+  }
+  .container .slider .page1 .page1__col2 {
+    display: none;
+  }
+  .container .slider .page1 .page1__col2 img.link {
+    display: none;
+  }
+  .container .slider .page2 {
+    grid-template-columns: 1fr;
+  }
+  .container .slider .page2 .page2__col3 {
+    display: none;
+  }
 }
-body.detail section.product .product__col1,
-body.detail section.product .product__col2 {
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-body.detail section.product .product__col1 {
-  align-items: center;
-}
-body.detail section.product .product__col1 img {
-  width: 350px;
-  margin-bottom: 20px;
-}
-body.detail section.product .product__col1 a {
-  width: 330px;
-  text-align: center;
-  font-size: 22px;
-  color: black;
-  padding: 12px 20px;
-  background-color: #fc9c25;
-  border-radius: 10px;
-}
-body.detail section.product .product__col2 {
-  align-items: flex-start;
-  margin-left: 30px;
-}
-body.detail section.product .product__col2 p {
-  font-size: 23px;
-  font-weight: 600;
-  margin: 10px 0px;
-}
-body.detail section.product .product__col2 p:first-child {
-  margin-bottom: 20px;
-  font-size: 30px;
-}
-body.detail section.product .product__col2 p:first-child i {
-  font-size: 30px;
-}
-body.detail section.product .product__col2 p i {
-  font-size: 28px;
-  margin-right: 10px;
-}
-body.detail section.product .product__col2 p.price {
-  margin-bottom: 20px;
-}
-body.detail section.product .product__col2 p.price del {
-  margin-left: 10px;
-  color: red;
-  font-size: 18px;
-}
-body.detail section.product .product__col2 p.price b {
-  color: red;
-  font-size: 30px;
-}
-
 section#main__lower {
   display: flex;
   flex-direction: column;
@@ -563,7 +446,6 @@ section#main__lower .location {
   opacity: 0.7;
   font-size: 18px;
   font-weight: 600;
-  color: black;
 }
 section#main__lower .location i {
   margin-right: 10px;
@@ -581,7 +463,6 @@ section#main__lower nav.menuOfMenu ul a li {
   font-weight: 600;
 }
 section#main__lower nav.menuOfMenu ul a li.focus {
-  font-size: 22px;
   color: black;
 }
 section#main__lower div.menuList {
@@ -589,21 +470,33 @@ section#main__lower div.menuList {
   padding-top: 50px;
 }
 section#main__lower div.menuList ul {
-  color: black;
   width: 80%;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
 }
-section#main__lower div.menuList ul a li.menu {
+section#main__lower div.menuList ul li.menu {
   margin: 30px 0px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-section#main__lower div.menuList ul a li.menu img {
+section#main__lower div.menuList ul li.menu img {
   width: 150px;
+}
+section#main__lower div.menuList ul li.menu .menu__info p {
+  margin: 4px 0px;
+}
+section#main__lower div.menuList ul li.menu .menu__info p.info__price {
+  text-align: center;
+  color: red;
+  font-size: 17px;
+  font-weight: 600;
+}
+section#main__lower div.menuList ul li.menu .menu__info p.info__price del {
+  font-size: 12px;
+  margin-right: 3px;
 }
 section#main__lower button.moreBtn {
   cursor: pointer;
@@ -614,18 +507,371 @@ section#main__lower button.moreBtn {
   border-radius: 20px;
   background-color: #fc9c25;
   font-size: 20px;
+  font-weight: 600;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+@media screen and (max-width: 1300px) {
+  section#main__lower div.menuList ul {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 1100px) {
+  section#main__lower .location {
+    font-size: 15px;
+  }
+  section#main__lower nav.menuOfMenu ul a {
+    margin: 0px 20px;
+  }
+  section#main__lower nav.menuOfMenu ul a li {
+    font-size: 19px;
+  }
+  section#main__lower div.menuList ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (max-width: 770px) {
+  section#main__lower {
+    padding: 30px 20px;
+  }
+  section#main__lower nav.menuOfMenu ul a {
+    margin: 0px 8px;
+  }
+  section#main__lower nav.menuOfMenu ul a li {
+    font-size: 15px;
+  }
+  section#main__lower div.menuList ul li.menu img {
+    width: 130px;
+  }
+  section#main__lower div.menuList ul li.menu .menu__info p {
+    font-size: 14px;
+  }
+  section#main__lower div.menuList ul li.menu .menu__info p.info__price {
+    font-size: 14px;
+  }
+  section#main__lower div.menuList ul li.menu .menu__info p del {
+    font-size: 10px;
+  }
+  section#main__lower button.moreBtn {
+    width: 80px;
+    padding: 10px;
+    font-size: 17px;
+  }
+}
+section.product {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+section.product .wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 80px 180px;
+}
+section.product .wrapper .product__col1,
+section.product .wrapper .product__col2 {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+section.product .wrapper .product__col1 {
+  align-items: center;
+}
+section.product .wrapper .product__col1 img {
+  width: 500px;
+  margin-bottom: 20px;
+}
+section.product .wrapper .product__col1 a {
+  width: 430px;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 600;
+  color: black;
+  padding: 12px 20px;
+  background-color: #fc9c25;
+  border-radius: 10px;
+}
+section.product .wrapper .product__col2 {
+  width: 100%;
+  align-items: flex-start;
+  margin-left: 110px;
+}
+section.product .wrapper .product__col2 p {
+  font-size: 23px;
+  font-weight: 600;
+  margin: 10px 0px;
+}
+section.product .wrapper .product__col2 p:first-child {
+  margin-bottom: 20px;
+  font-size: 30px;
+}
+section.product .wrapper .product__col2 p:first-child i {
+  font-size: 30px;
+}
+section.product .wrapper .product__col2 p i {
+  font-size: 28px;
+  margin-right: 10px;
+}
+section.product .wrapper .product__col2 p.price {
+  margin-bottom: 20px;
+}
+section.product .wrapper .product__col2 p.price del {
+  color: red;
+  font-size: 18px;
+}
+section.product .wrapper .product__col2 p.price b {
+  color: red;
+  font-size: 30px;
+}
+
+@media screen and (max-width: 1100px) {
+  section.product .wrapper {
+    justify-content: space-between;
+    padding: 50px;
+  }
+  section.product .wrapper .product__col1 {
+    margin-right: 20px;
+  }
+  section.product .wrapper .product__col1 img {
+    width: 300px;
+  }
+  section.product .wrapper .product__col1 a {
+    width: 250px;
+    font-size: 16px;
+  }
+  section.product .wrapper .product__col2 {
+    margin-left: 20px;
+    margin-left: 30px;
+  }
+  section.product .wrapper .product__col2 p {
+    font-size: 18px;
+  }
+  section.product .wrapper .product__col2 p:first-child {
+    font-size: 22px;
+  }
+  section.product .wrapper .product__col2 p:first-child i {
+    font-size: 24px;
+  }
+  section.product .wrapper .product__col2 p i {
+    font-size: 22px;
+  }
+  section.product .wrapper .product__col2 p.price del {
+    font-size: 13px;
+  }
+  section.product .wrapper .product__col2 p.price b {
+    font-size: 22px;
+  }
+}
+@media screen and (max-width: 770px) {
+  section.product {
+    height: 100vh;
+  }
+  section.product .wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+  section.product .wrapper .product__col1 {
+    margin: 0px;
+    margin-bottom: 30px;
+  }
+  section.product .wrapper .product__col1 img {
+    width: 200px;
+  }
+  section.product .wrapper .product__col1 a {
+    width: 230px;
+  }
+  section.product .wrapper .product__col2 {
+    margin: 0px;
+  }
+  section.product .wrapper .product__col2 p {
+    font-size: 16px;
+  }
+  section.product .wrapper .product__col2 p:first-child {
+    font-size: 22px;
+  }
+  section.product .wrapper .product__col2 p:first-child i {
+    font-size: 25px;
+  }
+}
+#login {
+  width: 100%;
+  height: 100vh;
+}
+#login .login__wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#login .login__wrapper h2 {
+  font-size: 40px;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+#login .login__wrapper form {
+  display: flex;
+  flex-direction: column;
+}
+#login .login__wrapper form input {
+  margin: 15px 0px;
+  padding: 20px;
+  width: 440px;
+  border: none;
+  border-radius: 20px;
+  font-size: 22px;
+}
+#login .login__wrapper form input.loginBtn {
+  background-color: rgb(52, 152, 219);
+  color: white;
+  text-align: center;
+  padding: 13px;
+  cursor: pointer;
+}
+#login .login__wrapper .btns {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#login .login__wrapper .btns a {
+  width: 440px;
+  margin: 8px 0px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 15px;
+  color: black;
+  text-align: center;
+}
+#login .login__wrapper .btns a.kakaoBtn {
+  background-color: #ffeb4a;
+}
+#login .login__wrapper .btns a.googleBtn {
+  background-color: white;
+}
+#login .login__wrapper .btns a.signUpBtn {
+  background-color: rgb(224, 224, 224);
+}
+#login .login__wrapper a.findPW {
+  margin-top: 10px;
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 770px) {
+  div#login .login__wrapper h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  div#login .login__wrapper form input {
+    width: 200px;
+    font-size: 13px;
+    margin: 7px 0px;
+    padding: 8px 15px;
+  }
+  div#login .login__wrapper form input.loginBtn {
+    padding: 7px;
+  }
+  div#login .login__wrapper .btns a {
+    width: 200px;
+    font-size: 10px;
+    padding: 12px;
+  }
+  div#login a.findPW {
+    font-size: 12px;
+  }
+}
+div#join {
+  width: 100%;
+  height: 100vh;
+}
+div#join .join__wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+div#join .join__wrapper h2 {
+  font-size: 40px;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+div#join .join__wrapper form {
+  display: flex;
+  flex-direction: column;
+}
+div#join .join__wrapper form input {
+  margin: 10px 0px;
+  padding: 10px 20px;
+  width: 440px;
+  border: none;
+  border-radius: 20px;
+  font-size: 18px;
+}
+div#join .join__wrapper form input.joinBtn {
+  background-color: rgb(52, 152, 219);
+  color: white;
+  text-align: center;
+  padding: 13px;
+  cursor: pointer;
+}
+div#join .join__wrapper .btns {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+div#join .join__wrapper .btns a {
+  width: 440px;
+  margin: 8px 0px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  color: black;
+  padding: 20px;
+  text-align: center;
+}
+div#join .join__wrapper .btns a.kakaoBtn {
+  background-color: #ffeb4a;
+}
+div#join .join__wrapper .btns a.googleBtn {
+  background-color: white;
+}
+
+@media screen and (max-width: 770px) {
+  div#join .join__wrapper h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  div#join .join__wrapper form input {
+    width: 200px;
+    font-size: 13px;
+    margin: 7px 0px;
+    padding: 8px 15px;
+  }
+  div#join .join__wrapper form input.joinBtn {
+    padding: 7px;
+  }
+  div#join .join__wrapper .btns a {
+    width: 200px;
+    font-size: 10px;
+    padding: 12px;
+  }
+}
+* {
+  box-sizing: border-box;
 }
 
 body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  background-color: #191919;
-  color: white;
   font-family: "Kakao Regular", sans-serif;
   background: linear-gradient(rgb(121, 133, 246), #cce6a8);
 }
+
+a {
+  text-decoration: none;
+}
+
+/*# sourceMappingURL=style.css.map */
