@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Zero-Link</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <a class="logo" href="#">
+            <li>
+              <img src="photo/logo.png" alt="logo" />
+              Zero-Link
+            </li>
+          </a>
+          <a href="#">
+            <li>오늘의 상품</li>
+          </a>
+          <a href="#">
+            <li>전체 상품</li>
+          </a>
+          <a href="#">
+            <li>커뮤니티</li>
+          </a>
+          <a href="#">
+            <li>챌린지</li>
+          </a>
+          <a class="login" href="#">
+            <li>Login</li>
+          </a>
+        </ul>
+      </nav>
+    </header>
+    <div class="container">
+      <div class="slider">
+        <div class="page1">
+          <div class="page1__col1">
+            <p class="desc__row1">Zero-Link,</p>
+            <img class="desc__row2" src="photo/text_zeroWaste.png" alt="" />
+            <div class="desc__row3">
+              <p>소상공인들과 함께 지구를 지키는 움직임</p>
+              <i class="fa-brands fa-youtube"></i>
+              <i class="fa-brands fa-instagram"></i>
+            </div>
+          </div>
+          <div class="page1__col2">
+            <img class="link" src="photo/logo.png" alt="" />
+            <img class="people" src="photo/people.png" alt="" />
+          </div>
+        </div>
+        <div class="page2">
+          <div class="page2__col1">
+            <div class="apple1">
+              <img src="photo/apple.png" alt="" />
+              <div class="wrapper1">
+                <p>텀블러 사용 30일</p>
+              </div>
+            </div>
+            <div class="apple2">
+              <img src="photo/apple.png" alt="" />
+              <div class="wrapper2">
+                <p>제로링크 다이어리 30일</p>
+              </div>
+            </div>
+          </div>
+          <div class="page2__col2">
+            <img class="col2__row1" src="photo/text_challenge.png" alt="" />
+            <img class="col2__row2" src="photo/text_payFree.png" alt="" />
+            <!-- 어느 url로 넘어가는지 정해야 함 (가입하지 않은 경우 회원가입 / 가입한 경우 챌린지 메뉴)-->
+            <a class="col2__row3" href="#">
+              <img src="photo/text_start.png" alt="" />
+            </a>
+          </div>
+          <div class="page2__col3">
+            <div class="tree">
+              <img src="photo/tree.png" alt="" />
+              <!-- if {user.id}-->
+              <p class="data1">100<!--{userChallenges.progress1}--></p>
+              <p class="data2">200<!-- {userChallenges.progress2} --></p>
+              <p class="data3">300<!-- {userChallenges.progress3} --></p>
+              <!-- else : "회원가입으로 챌린지에 참여해보세요!"-->
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="buttons">
+        <button class="btn__page1"></button>
+        <button class="btn__page2"></button>
+      </div>
+    </div>
+    <section id="main__lower">
+      <div class="location">
+        <i class="fa-solid fa-location-dot"></i>거리 기준: 한국외국어대학교
+        서울캠퍼스 (이문동)
+      </div>
+      <nav class="menuOfMenu">
+        <ul>
+          <a href="#"><li class="allMenus focus">전체 상품</li></a>
+          <a href="#"><li class="todayMenus">오늘의 상품</li></a>
+          <a href="#"><li class="veganMenus">비건 제품</li></a>
+          <a href="#"><li class="recylingMenus">리사이클 & 업사이클링</li></a>
+        </ul>
+      </nav>
+      <div class="menuList">
+        <ul>
+          <li class="menu">
+            <img src="./photo/apple.png" alt="" />
+            <div class="menu__info">
+              <p class="info__store">가게: #{가게이름} (#{거리})</p>
+              <p class="info__menu">상품: #{상품이름} (#{상품개수})</p>
+              <p class="info__price"><del>#{실제 금액}</del>#{할인 금액} 원</p>
+            </div>
+          </li>
+          <li class="menu">
+            <img src="./photo/apple.png" alt="" />
+            <div class="menu__info">
+              <p class="info__store">가게: #{가게이름} (#{거리})</p>
+              <p class="info__menu">상품: #{상품이름} (#{상품개수})</p>
+              <p class="info__price"><del>#{실제 금액}</del>#{할인 금액} 원</p>
+            </div>
+          </li>
+          <li class="menu">
+            <img src="./photo/apple.png" alt="" />
+            <div class="menu__info">
+              <p class="info__store">가게: #{가게이름} (#{거리})</p>
+              <p class="info__menu">상품: #{상품이름} (#{상품개수})</p>
+              <p class="info__price"><del>#{실제 금액}</del>#{할인 금액} 원</p>
+            </div>
+          </li>
+          <li class="menu">
+            <img src="./photo/apple.png" alt="" />
+            <div class="menu__info">
+              <p class="info__store">가게: #{가게이름} (#{거리})</p>
+              <p class="info__menu">상품: #{상품이름} (#{상품개수})</p>
+              <p class="info__price"><del>#{실제 금액}</del>#{할인 금액} 원</p>
+            </div>
+          </li>
+          <li class="menu">
+            <img src="./photo/apple.png" alt="" />
+            <div class="menu__info">
+              <p class="info__store">가게: #{가게이름} (#{거리})</p>
+              <p class="info__menu">상품: #{상품이름} (#{상품개수})</p>
+              <p class="info__price"><del>#{실제 금액}</del>#{할인 금액} 원</p>
+            </div>
+          </li>
+          <li class="menu">
+            <img src="./photo/apple.png" alt="" />
+            <div class="menu__info">
+              <p class="info__store">가게: #{가게이름} (#{거리})</p>
+              <p class="info__menu">상품: #{상품이름} (#{상품개수})</p>
+              <p class="info__price"><del>#{실제 금액}</del>#{할인 금액} 원</p>
+            </div>
+          </li>
+          <li class="menu">
+            <img src="./photo/apple.png" alt="" />
+            <div class="menu__info">
+              <p class="info__store">가게: #{가게이름} (#{거리})</p>
+              <p class="info__menu">상품: #{상품이름} (#{상품개수})</p>
+              <p class="info__price"><del>#{실제 금액}</del>#{할인 금액} 원</p>
+            </div>
+          </li>
+          <li class="menu">
+            <img src="./photo/apple.png" alt="" />
+            <div class="menu__info">
+              <p class="info__store">가게: #{가게이름} (#{거리})</p>
+              <p class="info__menu">상품: #{상품이름} (#{상품개수})</p>
+              <p class="info__price"><del>#{실제 금액}</del>#{할인 금액} 원</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <button class="moreBtn">더보기</button>
+    </section>
+    <script
+      src="https://kit.fontawesome.com/271532994e.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/slider.js"></script>
+  </body>
+</html>
